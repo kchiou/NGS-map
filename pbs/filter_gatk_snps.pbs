@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #PBS -l nodes=1:ppn=8,walltime=40:00:00
-#PBS -N filter_gatk_snps
+#PBS -N GatkFilterSnps
+#PBS -M klc328@nyu.edu
 #PBS -m abe
 #PBS -e localhost:${PBS_O_WORKDIR}/${PBS_JOBNAME}.e${PBS_JOBID}.${PBS_ARRAYID}
 #PBS -o localhost:${PBS_O_WORKDIR}/${PBS_JOBNAME}.o${PBS_JOBID}.${PBS_ARRAYID}
@@ -12,9 +13,9 @@
 
 working_dir=$PBS_O_WORKDIR
 
-module load jdk/1.7.0
+module load jdk/1.8.0
 
-GATK=~/exome_macaque/bin/GATK
+GATK=${HOME}/downloads/gatk-3.5
 GENOME_FA=genomes/papAnu2/papAnu2.fa
 GENOME_NAME=baboon
 
@@ -54,7 +55,7 @@ java -jar ${GATK}/GenomeAnalysisTK.jar \
 	-T SelectVariants \
 	-R ${GENOME_FA} \
 	--variant ${GENOME_NAME}_snps/chr${CHROM}.flt.vcf \
-	--select_expressions "vc.isNotFiltered() && vc.isSNP()" \
+	-select "vc.isNotFiltered() && vc.isSNP()" \
 	-o ${GENOME_NAME}_snps/chr${CHROM}.pass.snp.vcf
 
 exit;

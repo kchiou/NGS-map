@@ -9,7 +9,7 @@
 # -------------------------------------------------------------------------------------- #
 
 # Individual ID (used to name files)
-IND_ID=P_trog
+IND_ID=Kafue
 
 # Paths to input reads files
 # Must be in FASTQ format and end in '.fastq'
@@ -25,13 +25,13 @@ READ_TYPE=PE
 
 # Paths to genomes files
 # Must be in FASTA format
-GENOME_FA=genomes/AgamP4/AgamP4.fa
+GENOME_FA=genomes/papAnu2/papAnu2.fa
 
 # Figure out genome code from path to genome FASTA
 GENOME_CODE=$(notdir $(basename $(GENOME_FA)))
 
 # Common name of genome (used to name files)
-GENOME_NAME=human
+GENOME_NAME=baboon
 
 # Should results be uploaded to AWS S3? TRUE or FALSE
 DO_S3_UPLOAD=FALSE
@@ -47,19 +47,19 @@ S3_PROJECT_BUCKET_NAME=pretend-project-results-bucket-name
 # --- Paths to external programs
 # -------------------------------------------------------------------------------------- #
 
-FASTQC=~/bin/
-FASTX=~/bin/
-BWA=~/bin/
-SAMTOOLS=~/bin/
-BEDTOOLS=~/bin/
-LIFTOVER=~/bin/
-PICARD=~/bin/
-BAMTOOLS=~/bin/
-GATK=~/bin/
-BCFTOOLS=~/bin/
-VCFTOOLS=~/bin/
-TABIX=~/bin/
-PLINK=~/bin/
+FASTQC=${HOME}/downloads/fastqc-0.11.5/
+FASTX=${HOME}/downloads/fastx-0.0.13/
+BWA=${HOME}/downloads/bwa-0.7.13/
+SAMTOOLS=${HOME}/downloads/samtools-1.3.1/
+BEDTOOLS=${HOME}/downloads/bedtools-2.25.0/bin/
+LIFTOVER=${HOME}/downloads/kent-20160510/
+PICARD=${HOME}/downloads/picard-tools-1.119/
+BAMTOOLS=/share/apps/bamtools/2.3.0/intel/bin/
+GATK=${HOME}/downloads/gatk-3.5/
+BCFTOOLS=${HOME}/downloads/bcftools-1.3.1/
+VCFTOOLS=${HOME}/downloads/vcftools-0.1.14/bin/
+TABIX=${HOME}/downloads/htslib-develop/bin/
+PLINK=${HOME}/downloads/plink-1.07/
 
 # -------------------------------------------------------------------------------------- #
 # --- Parameters for external programs
@@ -71,9 +71,9 @@ BWA_ALN_PARAM=-t 8
 SNP_MIN_COV=5
 SNP_MAX_COV=100
 # BAMtools filter parameters
-MAPQUAL=20
+MAPQUAL=0
 # Should we mark duplicates? TRUE or FALSE
-MARK_DUPS=TRUE
+MARK_DUPS=FALSE
 # Max number of file handles to keep open when Picard's MarkDuplicates writes to disk.
 # This should be a bit lower than the per-process max number of files that can be open.
 # You can find that max using command 'ulimit -n'
