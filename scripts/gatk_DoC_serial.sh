@@ -6,7 +6,7 @@
 # --- to call from the Makefile, for users committed to that route.
 # ==============================================================================
 
-module load jdk/1.7.0
+module load jdk/1.8.0
 
 CHROM_ITER=1
 
