@@ -15,7 +15,7 @@ working_dir=$PBS_O_WORKDIR
 
 module load jdk/1.8.0
 
-GATK=/home/klc328/downloads/gatk-3.5
+GATK=${HOME}/downloads/gatk-3.5
 GENOME_FA=genomes/papAnu2/papAnu2.fa
 GENOME_NAME=baboon
 
