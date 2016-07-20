@@ -6,7 +6,7 @@
 # --- to call from the Makefile, for users committed to that route.
 # ==============================================================================
 
-module load jdk/1.8.0
+module load jdk/1.7.0_60
 
 CHROM_ITER=1
 
@@ -29,15 +29,15 @@ while [ $CHROM_ITER -lt 22 ]; do
 	# Make output directory
 	mkdir results/DoC
 
-	java -Xmx2g -jar ${GATK}/GenomeAnalysisTK.jar \                                                                                                                       
-		-R ${GENOME_FA} \                                                                                                                                             
-		-T DepthOfCoverage \                                                                                                                                          
-		-o results/DoC/DoC.${GENOME_NAME}.chr${CHROM} \                                                                                                           
-		${BAMS[*]} \                                                                                                                                                  
-		-L chr${CHROM} \                                                                                                                                              
+	java -Xmx2g -jar ${GATK}/GenomeAnalysisTK.jar \
+		-R ${GENOME_FA} \
+		-T DepthOfCoverage \
+		-o results/DoC/DoC.${GENOME_NAME}.chr${CHROM} \
+		${BAMS[*]} \
+		-L chr${CHROM} \
 		-ct 5 -ct 10 -ct 20
 
-	let CHROM_ITER=CHROM_ITER+1 
+	let CHROM_ITER=CHROM_ITER+1
 
 done;
 

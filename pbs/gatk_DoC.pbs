@@ -12,7 +12,7 @@
 
 working_dir=$PBS_O_WORKDIR
 
-module load jdk/1.8.0
+module load jdk/1.7.0_60
 
 GATK=${HOME}/downloads/gatk-3.5
 GENOME_FA=genomes/papAnu2/papAnu2.fa
