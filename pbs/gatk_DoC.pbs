@@ -39,7 +39,7 @@ for b in ${BAMS[*]}; do
 done
 
 # Make output directory
-mkdir results/DoC
+mkdir -p results/DoC
 
 java -Xmx2g -jar ${GATK}/GenomeAnalysisTK.jar \
     -R ${GENOME_FA} \
